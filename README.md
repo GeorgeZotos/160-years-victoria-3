@@ -8,7 +8,7 @@ Inert baseline mod shell for Victoria 3 **1.13.11**. This repository is the auth
 - **Phase 0.7 — complete:** verify launcher registration, loading, vanilla campaign startup, logs, and save/load.
 - **Phase 0.8 — complete:** create the reviewed baseline commit and verify the checkpoint bundle and manifest.
 
-The approved Phase 0.5 Architecture Design and Baseline Mod Shell Contract govern this pass. Future gameplay changes need their own approved contracts and plans. No Git remote is configured for this shell.
+The approved Phase 0.5 Architecture Design and Baseline Mod Shell Contract govern this pass. Future gameplay changes need their own approved contracts and plans. The canonical public repository is hosted on GitHub at GeorgeZotos/160-years-victoria-3.
 
 ## Local loading evidence
 

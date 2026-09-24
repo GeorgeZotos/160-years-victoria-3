@@ -1,0 +1,12 @@
+{
+  "name": "160 Years Victoria 3",
+  "id": "",
+  "version": "0.1.0",
+  "supported_game_version": "1.13.11",
+  "short_description": "Inert baseline shell for Victoria 3 1.13.11",
+  "tags": [],
+  "relationships": [],
+  "game_custom_data": {
+    "multiplayer_synchronized": true
+  }
+}

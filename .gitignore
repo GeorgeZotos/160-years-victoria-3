@@ -1,0 +1,19 @@
+# Generated game and launcher state
+/logs/
+/crashes/
+/dumps/
+/exceptions/
+/shadercache/
+/.launcher-cache/
+/save games/
+/launcher-v2.sqlite
+/content_load.json
+/game_data.json
+/pdx_settings.json
+
+# Transient and machine-local files
+*.log
+*.tmp
+*.bak
+Thumbs.db
+.DS_Store

@@ -1,24 +1,65 @@
 # 160 Years Victoria 3
 
-Inert baseline mod shell for Victoria 3 **1.13.11**. This repository is the authoritative project source. It contains metadata and project instructions only; it does not change gameplay. The installed vanilla game is a read-only reference.
+A Victoria 3 timeline-extension project for **Victoria 3 1.13.11**.
 
-## Project gates
+The long-term goal is to extend the playable timeline beyond the vanilla 1936 endpoint toward the modern era, while preserving the vanilla **1836–1936** experience as much as practical.
 
-- **Phase 0.6 — complete:** implement and statically review the shell.
-- **Phase 0.7 — complete:** verify launcher registration, loading, vanilla campaign startup, logs, and save/load.
-- **Phase 0.8 — complete:** create the reviewed baseline commit and verify the checkpoint bundle and manifest.
+The repository is the authoritative project source. Vanilla game files are treated as read-only reference material, and gameplay changes are implemented additively wherever possible.
 
-The approved Phase 0.5 Architecture Design and Baseline Mod Shell Contract govern this pass. Future gameplay changes need their own approved contracts and plans. The canonical public repository is hosted on GitHub at GeorgeZotos/160-years-victoria-3.
+## Current status
 
-## Local loading evidence
+### Phase 0 — Foundation: COMPLETE
 
-The installed game executable contains the `pdx_mod_dlc_manager/pdx_mod_stubber.cpp` template for `.metadata/metadata.json` and the `pdx_mod_metadata.cpp` parser fields. Its loader strings reference the same metadata path. The launcher settings report version 1.13.11, the `--mod_stubber` entry point, `modPath: mod`, and loose-file mod support. The metadata format and launcher registration passed Phase 0.7 runtime verification.
+- **Phase 0.6:** baseline mod shell implemented and statically reviewed.
+- **Phase 0.7:** launcher registration, game loading, vanilla campaign startup, logs, and save/load runtime-tested.
+- **Phase 0.8:** baseline checkpoint created, published, and recovery-archived.
 
-The game-facing integration uses a directory junction under the game's user-data `mod` directory, targeting this repository as the single source tree. Do not edit launcher databases or configuration to register the mod.
+### ERA I — 1936–1945
+
+- **ERA I / 1.1 — Starting-State Bridge: COMPLETE**
+  - Vanilla campaign start remains `1836.1.1`.
+  - Campaign end moved from `1936.1.1` to `1946.1.1`.
+  - No historical 1936 reset or alternate starting scenario was added.
+  - No vanilla files were modified.
+  - No `replace_path` is used.
+  - No unrelated gameplay content was introduced.
+
+Runtime validation on Victoria 3 **1.13.11** confirmed:
+
+- normal continuation through `1936.1.1` without GAME OVER;
+- continued control of the same campaign state;
+- successful post-1936 save/load;
+- GAME OVER at the new endpoint, `1946.1.1`;
+- continuation and save/load around the new endpoint;
+- no material bridge-attributable runtime or encoding errors.
+
+The next planned development pass is:
+
+**ERA I / 1.2 — Technology**
+
+## Development approach
+
+The project follows an additive-first preservation strategy:
+
+**REUSE → RETIME → REPURPOSE → EXTEND → ADD**
+
+The aim is to preserve vanilla systems and content unless a later-era requirement explicitly requires a change.
+
+Major gameplay changes are developed as small, reviewable passes with separate audit, design, implementation, review, runtime validation, and checkpoint stages.
+
+## Local loading architecture
+
+The game-facing installation uses a directory junction under Victoria 3's user-data `mod` directory, pointing to the authoritative repository as the single source tree.
+
+This avoids maintaining a second copy of the mod.
+
+The metadata format and launcher registration were verified during Phase 0 runtime validation.
 
 ## Initial Phase 0 DLC baseline
 
-The initial Phase 0 baseline was recorded **2026-09-24** from the installed game's Steam app manifest, matching installed DLC descriptors, and launcher content-load state (`disabledDLC: []`). The ten DLCs below were installed, and none was recorded as disabled. The Phase 0.7 runtime check confirmed the enabled inventory matched this baseline.
+The initial Phase 0 baseline was recorded **2026-09-24** from the installed game's Steam app manifest, installed DLC descriptors, and launcher content-load state.
+
+The following DLCs were installed and enabled during the baseline validation:
 
 | Steam ID | Installed DLC |
 | --- | --- |
@@ -33,4 +74,4 @@ The initial Phase 0 baseline was recorded **2026-09-24** from the installed game
 | 3174360 | Pivot of Empire |
 | 3450170 | Charters of Commerce |
 
-The shell has no DLC-specific content or dependencies on other mods.
+The mod currently has no DLC-specific gameplay content and no dependencies on other mods.
